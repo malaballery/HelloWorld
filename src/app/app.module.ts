@@ -1,6 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+registerLocaleData(localeFr, 'fr');
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,6 +13,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
 import { CarItemComponent } from './cars-list/car-item/car-item.component';
 import { DriverItemComponent } from './drivers-list/driver-item/driver-item.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,9 +28,10 @@ import { DriverItemComponent } from './drivers-list/driver-item/driver-item.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [{ provide: LOCALE_ID, useValue: "fr-FR" }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

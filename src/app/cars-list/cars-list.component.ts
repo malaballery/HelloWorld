@@ -6,45 +6,33 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cars-list.component.css']
 })
 export class CarsListComponent implements OnInit {
-
-  // 1er exemple d'interpolation
-  // type string int ou n'importe
-  mardiMatin:any = "Ils ont l'air bien OFF";
-
-  //2e exemple d'objet ou propriété 
-
-  game: any = {
-    title: "Among Us",
-    support: "Android",
-    multi: 10
-  }
-
-  userEmail="test@test.fr";
-
-  coverImage:string = "https://cdn03.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_download_software_1/H2x1_NSwitchDS_AmongUs.jpg";
-
-  age:number = 77;
+  
   constructor() { }
 
-  ngOnInit(): void {
+  carUpdate:any;
+
+  carOne:any = {
+    name: "pagani huayra",
+    pays: "italie",
+    power: "765",
+    perf: 3.2
+  }
+  carTwo:any = {
+    name: "koenigsegg agera rs",
+    pays: "suède",
+    power: 1383,
+    perf: 2.6
+  }
+  carThree:any = {
+    name: "zenvo tsr s",
+    pays: "danemark",
+    power: "1200",
+    perf: 2.8
   }
 
-  // Interpolation du retour d'une méthode
-
-  getStock(){
-    return 2050;
+  ngOnInit(): void 
+  {
+    this.carUpdate = new Date;
   }
 
-  isNotAvailable(){
-    return false;
-  }
-
-  //Appel à une méthode pour toutes sortes de traitement
-  getMakeUp(){
-    console.log("Silence")
-  }
-  
-  enfantUn= "Bird";
-  enfantDeux= "Fille";
-  enfantTrois= "Garçon";
 }

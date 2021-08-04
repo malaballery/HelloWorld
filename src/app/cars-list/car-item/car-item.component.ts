@@ -7,9 +7,20 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CarItemComponent implements OnInit {
 
-  vehicule:string = "Ferrari";
+  @Input() vehicule:any
+  @Input() car:any
 
-  @Input() enfant:any;
+  onSurvol() {
+    alert ("Réservez cette voiture en cliquant sur commander !")
+  }
+
+  isBooked:boolean = false;
+  bookingMessage:string = "Réserver maintenant";
+
+  onClick() {
+    this.isBooked=true
+    this.bookingMessage = "Cette voiture est réservée"
+  }
 
   constructor() { }
 

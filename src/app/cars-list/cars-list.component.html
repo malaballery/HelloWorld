@@ -2,24 +2,10 @@
     Nos voitures
 </h1>
 
-<app-car-item [enfant]="enfantUn"></app-car-item>
-<app-car-item [enfant]="enfantDeux"></app-car-item>
-<app-car-item [enfant]="enfantTrois"></app-car-item>
-
-{{ mardiMatin }}
-
-<p>{{ age }} ans, âge maximal pour jouer au Cluedo (après t'es trop vieux pépé, tu captes rien)</p>
-
-<div class="text-center shadow border p-5 bg-dark text-white">
-    <h2>{{ game.title }}</h2>
-    <p>Support: {{ game.support }}</p>
-    <p>Multi: {{ game.multi }} joueurs</p>
-    <p>Stock: {{ getStock() }} en stock</p>
-
-    <img [src]="coverImage" alt="{{ game.title}}" class="img-fluid">
-
-    <button class="btn btn-success my-3" [disabled]="isNotAvailable()" >Commander</button>
-    <input class="form-control" type="text" [value]="userEmail">
+<div class="row row-cols-3">
+    <app-car-item [car]="carOne"></app-car-item>
+    <app-car-item [car]="carTwo"></app-car-item>
+    <app-car-item [car]="carThree"></app-car-item>
 </div>
 
-{{ getMakeUp() }}
+<div class="bg-dark text-white p-2 my-5">Données mise à jour: {{ carUpdate | date:"EEEE dd MMMM yyyy à H:mm" }}</div>

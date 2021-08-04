@@ -7,17 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriversListComponent implements OnInit {
 
+
+  isOnline:boolean = true;
+  book:any = {
+    title: "Le secret des croisades",
+    author: "Julien",
+    size: 12,
+    description: "Andréa a dit que Thomas avait un petit zizi",
+    price: null
+  }
+
+  games:any[] = ["Harry Potter 4", "Overwatch", "Minecraft" ]
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onClickButton(inputValue: string) {
-    console.log(inputValue);
-  }
-
-  onSurvol() {
-    alert("Survol de la zone");
-
-  }
 }

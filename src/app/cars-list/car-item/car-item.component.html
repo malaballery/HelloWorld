@@ -1,1 +1,13 @@
-<p>je suis {{ enfant }}</p>
+
+    <div  class="p-5 col card m-2 border-warning">
+        <!-- <p class="fw-bold">{{ vehicule.name }}</p>
+        <p>Prix : {{ vehicule.price }} €</p> -->
+
+        <h2 (mouseover)="onSurvol()">{{ car.name | titlecase }}</h2>
+        <p>Origine : {{ car.pays }}</p>
+        <p>Perf 0 à 100 km/h : {{ car.perf }} sec</p>
+        <p>Puissance : {{ car.power }}</p>
+        <p>{{bookingMessage}}</p>
+        <button (click)="onClick()" class="btn btn-success" [disabled]="isBooked">Commander</button>
+    </div>
+    

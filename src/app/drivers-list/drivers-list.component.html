@@ -2,21 +2,18 @@
     Nos pilotes
 </h1>
 
-<h2>Event binding examples</h2>
+<div *ngIf="isOnline" class="p-5 card bg-info">
+    <h2>
+        {{ book.title }}
+    </h2>
+    <p>{{ book.author }}</p>
+    <span *ngIf="book.price">prix: {{book.price}} €</span>
+    <span *ngIf="book.size < 14">{{book.description}}</span>
+    <span *ngIf="book.price == null">prix non communiqué</span>
+</div>
 
-<button class="btn btn-info my-5 shadow">Cliquez !</button>
-
-<h3 (mouseover)="onSurvol()" class="bg-warning w-50 p-4">Survolez-moi !</h3>
-<input type="text" name="" id="" (blur)="onSurvol()">
-<br>
-<br>
-
-<h4>Example</h4>
-
-<input type="text" #banane class="form-group">
-
-<br>
-
-<button (click)="onClickButton(banane.value)" class="btn btn-danger">Envoyer</button>
-
-<img [src]="banane.value" class="col-6" alt="">
+<ul>
+    <li *ngFor="let game of games">
+        {{game}}
+    </li>
+</ul>
