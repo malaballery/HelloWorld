@@ -2,18 +2,45 @@
     Nos pilotes
 </h1>
 
-<div *ngIf="isOnline" class="p-5 card bg-info">
-    <h2>
-        {{ book.title }}
-    </h2>
-    <p>{{ book.author }}</p>
-    <span *ngIf="book.price">prix: {{book.price}} €</span>
-    <span *ngIf="book.size < 14">{{book.description}}</span>
-    <span *ngIf="book.price == null">prix non communiqué</span>
+<p [style.color]="colorOne">
+    style.color est une couleur en props !
+</p>
+
+<p [style.color]="getColor()">
+    style.color fonctionne aussi avec une méthode !
+</p>
+
+<p [style.color]="'gold'">
+    style.color ou comme ça mais pas pas ouf
+</p>
+
+<div [style.background-color]="onOff ? colorOn : getColorOff()">
+    Affichage selon une condition
 </div>
 
-<ul>
-    <li *ngFor="let game of games">
-        {{game}}
-    </li>
-</ul>
+<button (click)="onSwitch()" class="btn btn-info my-5">
+    <span *ngIf="!onOff">ON 🐱‍👤 (●'◡'●)</span>
+    <span *ngIf="onOff">OFF 🐱‍🚀</span>
+</button>
+
+<div [ngStyle]="{color:colorOne, margin:marginPts, padding:'20px', backgroundColor:colorOn }">
+    ngStyle la différence : déclare un objet dedans, donc on peut en mettre plusieurs !
+</div>
+
+<p [ngClass]="{'text-center':true}">Bonjour</p>
+
+<div class="card shadow text-center">
+    <h2>{{product.label}}</h2>
+    <p> {{ product.price}} </p>
+    <p>Quantité :
+        <span [ngClass]="{
+            'badge':true,
+            'bg-success text-warning': product.stock > 5,
+            'bg-warning text-primary': product.stock <= 5,
+            'bg-danger text-white': product.stock < 5
+        }">
+            {{product.stock}} en stock
+        </span>
+    </p>
+</div>
+

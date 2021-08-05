@@ -7,21 +7,36 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriversListComponent implements OnInit {
 
+  colorOne:string = "blue";
 
-  isOnline:boolean = true;
-  book:any = {
-    title: "Le secret des croisades",
-    author: "Julien",
-    size: 12,
-    description: "Andréa a dit que Thomas avait un petit zizi",
-    price: null
+  colorOn:string= "yellow";
+
+  onOff:boolean = true;
+
+  product:any = {
+    label: "iphone12",
+    price: 1584122,
+    stock: 15
   }
 
-  games:any[] = ["Harry Potter 4", "Overwatch", "Minecraft" ]
-
+  marginPts:string = "10px";
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  getColor() {
+    return "green";
+  }
+  getColorOff() {
+    return "black";
+  }
+
+  onSwitch() {
+    if(this.onOff) {
+      this.onOff = false;
+    } else {
+      this.onOff = true;
+    }
+  }
 }
