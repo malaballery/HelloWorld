@@ -1,13 +1,25 @@
-
-    <div  class="p-5 col card m-2 border-warning">
-        <!-- <p class="fw-bold">{{ vehicule.name }}</p>
-        <p>Prix : {{ vehicule.price }} €</p> -->
-
-        <h2 (mouseover)="onSurvol()">{{ car.name | titlecase }}</h2>
-        <p>Origine : {{ car.pays }}</p>
-        <p>Perf 0 à 100 km/h : {{ car.perf }} sec</p>
-        <p>Puissance : {{ car.power }}</p>
-        <p>{{bookingMessage}}</p>
-        <button (click)="onClick()" class="btn btn-success" [disabled]="isBooked">Commander</button>
+<div  class="card text-center shadow my-3">
+    <div class="card-header bg-dark text-white">
+        <h2 class="card-title" (mouseover)="onSurvol()">{{ car.name | titlecase }}</h2>
     </div>
-    
+    <div class="card-body">
+        <img [src]="car.coverImage" class="img-fluid" alt="photo {{car.name}}">
+        <p *ngIf="car.pays; else elseBlock">Origine : {{ car.pays | uppercase }}</p>
+        <p ><ng-template #elseBlock>Origine : {{ nC }}</ng-template></p>
+
+        <p *ngIf="car.perf">
+            Perf 0 à 100 km/h : {{ car.perf }} sec
+        </p>
+        <p *ngIf="!car.perf">Perf 0 à 100 km/h : {{ nC}}</p>
+        <p *ngIf="car.power" [ngClass]="{
+            'badge':true,
+            'bg-info': car.power <= 1000,
+            'bg-warning': car.power > 1000
+        }">
+            Puissance : {{ car.power }} CH
+        </p>
+        <p *ngIf="!car.power">Perf 0 à 100 km/h : {{ nC}}</p>
+        <p [ngClass]="{'text-success': isBooked}">{{bookingMessage}}</p>
+        <button (click)="onClick()" class="btn btn-primary" [disabled]="isBooked">Commander</button>
+    </div>
+</div>

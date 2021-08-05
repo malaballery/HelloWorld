@@ -10,6 +10,8 @@ export class CarItemComponent implements OnInit {
   @Input() vehicule:any
   @Input() car:any
 
+  nC:string ="non communiqué";
+  
   onSurvol() {
     alert ("Réservez cette voiture en cliquant sur commander !")
   }
@@ -19,7 +21,7 @@ export class CarItemComponent implements OnInit {
 
   onClick() {
     this.isBooked=true
-    this.bookingMessage = "Cette voiture est réservée"
+    this.bookingMessage = "Bonne route ! [réservée]"
   }
 
   constructor() { }
