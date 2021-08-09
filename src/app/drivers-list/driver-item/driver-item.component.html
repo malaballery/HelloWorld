@@ -1,1 +1,30 @@
-<p>driver-item works!</p>
+<div  class="card text-center shadow my-3" [ngClass]="{
+    'border-success': driver.likeIts > 0,
+    'border-danger': driver.likeIts < 0
+}">
+    <div class="card-header bg-dark text-white">
+        <h2 class="card-title">{{ driver.fullName | titlecase }}</h2>
+    </div>
+    <div class="card-body">
+        <div><img [src]="driver.coverImage" class="img-fluid w-100" alt="photo {{driver.fullName}}"></div>
+        <hr class="my-3 dropdown-divider">
+        <p *ngIf="driver.pays; else elseBlock">Origine : {{ driver.pays | uppercase }}</p>
+        <p ><ng-template #elseBlock>Origine : {{ nC }}</ng-template></p>
+        <p *ngIf="driver.category ; else elseBlock2">
+            Discipline : <span [ngClass]="{
+                'badge':true,
+                'bg-primary': driver.category == 'rallye',
+                'bg-secondary': driver.category == 'gymkhana',
+                'bg-danger': driver.category == 'nascar',
+                'bg-warning': driver.category == 'drag',
+                'bg-success': driver.category == 'formule 1'
+            }">{{ driver.category }}</span>
+        </p>
+        <p ><ng-template #elseBlock2>Discipline : {{ nC }}</ng-template></p>
+
+        <p>
+            <span [ngStyle]="{backgroundColor:green, color:'white', padding: paddingThumb, margin:'10px', borderRadius:'5px', cursor:'pointer'}" (click)="vote(1)"><i class="fas fa-thumbs-up"></i></span>
+            <span [ngStyle]="{backgroundColor:red, color:'white', padding: paddingThumb, margin:'10px', borderRadius:'5px', cursor:'pointer'}" (click)="vote(-1)"><i class="fas fa-thumbs-down"></i></span>
+        </p>
+    </div>
+</div>
