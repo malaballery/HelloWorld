@@ -1,3 +1,7 @@
 <h1 class="my-5">
     Nos pilotes
 </h1>
+
+<div class="row row-cols-3 card-deck justify-content-center">
+    <app-driver-item *ngFor="let oneDriver of drivers" [driver]="oneDriver"></app-driver-item>
+</div>
