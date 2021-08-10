@@ -11,3 +11,11 @@
 <input type="text" [(ngModel)]="userName">
 
 {{userName}}
+
+<div class="row row-cols-3 card-deck justify-content-center">
+  <app-driver-item *ngFor="let bestDriver of bestDrivers" [driver]="bestDriver"></app-driver-item>
+</div>
+
+<div class="row row-cols-3 card-deck justify-content-center">
+  <app-car-item *ngFor="let bestCar of bestCars" [car]="bestCar"></app-car-item>
+</div>

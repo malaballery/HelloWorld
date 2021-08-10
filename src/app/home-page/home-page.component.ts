@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-home-page',
@@ -11,7 +12,12 @@ export class HomePageComponent implements OnInit {
 
   userName:any;
 
-  constructor() { }
+  bestDrivers:any = this.driver.getNbBestDrivers(3);
+  bestCars:any = this.car.getNbPowerfullCars(3);
+  constructor(private driver:DataService, private car:DataService) { 
+    this.driver.getNbBestDrivers(3)
+    this.car.getNbPowerfullCars(3)
+  }
 
   ngOnInit(): void {
   }

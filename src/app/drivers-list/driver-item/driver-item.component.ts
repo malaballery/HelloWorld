@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-driver-item',
@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriverItemComponent implements OnInit {
 
+  nC:string ="NC";
+
+  @Input() driver:any
+
+  green:string = "green"
+  red:string ="red"
+  paddingThumb:string = "10px 15px"
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  vote(i:number) {
+    this.driver.likeIts = this.driver.likeIts + i;
+  }
 }
