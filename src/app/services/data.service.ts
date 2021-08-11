@@ -1,3 +1,4 @@
+import { createAotCompiler } from '@angular/compiler';
 import { Injectable, ɵisListLikeIterable } from '@angular/core';
 
 @Injectable({
@@ -121,26 +122,35 @@ export class DataService {
   }
 
   getNbBestDrivers(nb:number){
-    this.drivers.sort((function compare(a: { likeIts: number; }, b: { likeIts: number; }) {
+    var allDrivers = this.drivers.slice()
+    allDrivers.sort((function compare(a: { likeIts: number; }, b: { likeIts: number; }) {
       if (a.likeIts > b.likeIts)
          return -1;
       else if (a.likeIts < b.likeIts )
          return 1;
       else return 0;
     }))
-    return this.drivers.slice(0, nb)
+    return allDrivers.slice(0, nb)
   }
 
   getNbPowerfullCars(nb:number){
-    this.cars.sort((function compare(a: { power: number; }, b: { power: number; }) {
+    var allCars = this.cars.slice()
+    allCars.sort((function compare(a: { power: number; }, b: { power: number; }) {
       if (a.power > b.power)
          return -1;
       else if (a.power < b.power )
          return 1;
       else return 0;
     }))
-    return this.cars.slice(0, nb)
+    return allCars.slice(0, nb)
   }
+  
+  // Correction Prof
+  // getNbPowerfullCars(nb:number){
+  //   var allCars = this.cars.slice()
+  //   allCars.sort( (carB: { power: number; }, carA: { power: number; }) => { return carA.power - carB.power })
+  //   return allCars.slice(allCars.lenght, nb)
+  // }
 }
 
 
