@@ -118,4 +118,22 @@ export class DataService {
   getAllDrivers() {
     return this.drivers;
   }
+
+  getNbBestDrivers(nb:number) {
+
+    var allDrivers = this.drivers.slice();
+    allDrivers.sort((b:any, a:any) => {return a.likeIts - b.likeIts});
+
+    return allDrivers.slice(0, nb);
+
+  }
+
+  getNbPowerfullCars(nb:number) {
+
+    var allCars = this.cars.slice();
+    allCars.sort((b:any, a:any) => {return a.power - b.power});
+    
+    return allCars.slice(0, nb);
+
+  }
 }

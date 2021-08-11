@@ -8,6 +8,15 @@
     </p>
 </div> 
 
-<input type="text" [(ngModel)]="userName">
+<!-- <input type="text" [(ngModel)]="userName">
 
-{{userName}}
+{{userName}} -->
+
+<h2 class="text-center fw-bold text-decoration-underline">Nos pilotes d'exception</h2>
+<div class="row row-cols-3 card-deck justify-content-center">
+  <app-driver-item *ngFor="let bestDriver of bestDrivers" [driver]= "bestDriver"></app-driver-item>
+</div>
+<h2 class="text-center fw-bold text-decoration-underline">Nos voitures d'exception</h2>
+<div class="row row-cols-3 card-deck justify-content-center">
+  <app-car-item *ngFor="let bestCar of bestCars" [car]= "bestCar"></app-car-item>
+</div>
