@@ -13,9 +13,9 @@ export class CarItemComponent implements OnInit {
 
   nC:string ="NC";
   
-  onSurvol() {
-    alert ("Réservez cette voiture en cliquant sur commander !")
-  }
+  // onSurvol() {
+  //   alert ("Réservez cette voiture en cliquant sur commander !")
+  // }
 
   isBooked:boolean = false;
   bookingMessage:string = "Réserver maintenant";

@@ -1,6 +1,7 @@
 <div  class="card text-center shadow my-3">
     <div class="card-header bg-dark text-white">
-        <h2 class="card-title" (mouseover)="onSurvol()">{{ car.name | titlecase }}</h2>
+        <!-- <h2 class="card-title" (mouseover)="onSurvol()">{{ car.name | titlecase }}</h2> -->
+        <h2 class="card-title">{{ car.name | titlecase }}</h2>
     </div>
     <div class="card-body">
         <img [src]="car.coverImage" class="img-fluid" alt="photo {{car.name}}">

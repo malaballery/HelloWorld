@@ -1,9 +1,11 @@
 <h1 class="my-5">
     Nos voitures
 </h1>
-
+<div class="d-flex justify-content-between align-items-center my-5">
+    <div><a routerLink="/new-car" class="badge bg-success me-3 p-3 fs-4 text-decoration-none">+ Ajouter une voiture</a></div>
+    <div class="badge bg-dark text-white p-3 fs-4">Données mise à jour: {{ carUpdate | date:"EEEE dd MMMM yyyy à H:mm" }}</div>
+</div>
 <div class="row row-cols-3 card-deck justify-content-center">
     <app-car-item *ngFor="let oneCar of cars" [car]="oneCar"></app-car-item>
 </div>
 
-<div class="bg-dark text-white p-2 my-5">Données mise à jour: {{ carUpdate | date:"EEEE dd MMMM yyyy à H:mm" }}</div>
