@@ -18,7 +18,7 @@
         }">
             Puissance : {{ car.power }} CH
         </p>
-        <p *ngIf="!car.power">Perf 0 à 100 km/h : {{ nC}}</p>
+        <p *ngIf="!car.power">Puissance : {{ nC}}</p>
         <p [ngClass]="{'text-success': isBooked}">{{bookingMessage}}</p>
         <button (click)="onClick()" class="btn btn-primary" [disabled]="isBooked">Commander</button>
     </div>

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Car } from 'src/app/models/Car';
 
 @Component({
   selector: 'app-car-item',
@@ -8,9 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CarItemComponent implements OnInit {
 
   @Input() vehicule:any
-  @Input() car:any
+  @Input() car!:Car
 
-  nC:string ="non communiqué";
+  nC:string ="NC";
   
   onSurvol() {
     alert ("Réservez cette voiture en cliquant sur commander !")
