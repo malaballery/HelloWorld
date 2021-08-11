@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-drivers-list',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DriversListComponent implements OnInit {
 
-  constructor() { }
+  drivers: any;
+  
+  constructor(private data:DataService) { }
 
   ngOnInit(): void {
+    this.drivers = this.data.getAllDrivers();
   }
 
 }
