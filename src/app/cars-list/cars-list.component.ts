@@ -13,16 +13,16 @@ export class CarsListComponent implements OnInit {
 
   cars!: Car[];
 
-  spoilCar = new Car("Tuture", "Groland", "https://i.skyrock.net/2777/14952777/pics/519180567.jpg", null , 19.5);
+  // spoilCar = new Car("Tuture", "Groland", "https://i.skyrock.net/2777/14952777/pics/519180567.jpg", null , 19.5);
 
   constructor(private data:DataService) {}
 
   ngOnInit(): void 
   {
     this.carUpdate = new Date;
-    this.data.cars.push(this.spoilCar)
+    // this.data.cars.push(this.spoilCar)
     this.cars = this.data.getAllCars();
-    console.log(this.spoilCar)
+    // console.log(this.spoilCar)
   }
 
 }

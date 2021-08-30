@@ -137,4 +137,8 @@ export class DataService {
     return allCars.slice(0, nb);
 
   }
+
+  addNewCar(car:Car) {
+    this.cars.push(car);
+  }
 }
