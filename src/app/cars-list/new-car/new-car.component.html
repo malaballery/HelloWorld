@@ -1,25 +1,25 @@
 <h1>Créer une voiture</h1>
 <div class="col-6 border shadow my-5 p-5">
-    <form>
+    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
         <div class="form-group">
             <label for="name">Nom de la voiture</label>
-            <input type="text" class="form-control" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name" ngModel>
         </div>
         <div class="form-group">
             <label for="pays">Pays d'origine</label>
-            <input type="text" class="form-control" id="pays" name="pays">
+            <input type="text" class="form-control" id="pays" name="pays" ngModel>
         </div>
         <div class="form-group">
             <label for="coverImage"> Photo de la voiture (url)</label>
-            <input type="text" class="form-control" id="coverImage" name="coverImage">
+            <input type="text" class="form-control" id="coverImage" name="coverImage" ngModel>
         </div>
         <div class="form-group">
             <label for="power">Puissance</label>
-            <input type="number" class="form-control" id="power" name="power">
+            <input type="number" class="form-control" id="power" name="power" ngModel>
         </div>
         <div class="form-group">
             <label for="perf">Temps de 0 à 100 km/h</label>
-            <input type="number" class="form-control" id="perf" name="perf">
+            <input type="number" class="form-control" id="perf" name="perf" ngModel>
         </div>
         <button class="btn btn-success my-5">Enregistrer</button>
     </form>
