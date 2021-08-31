@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Driver } from 'src/app/models/Driver';
-import { DataService } from 'src/app/services/data.service';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-new-driver',
@@ -11,25 +10,21 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class NewDriverComponent implements OnInit {
 
-  constructor(private data:DataService,
-              private router:Router) { }
+newDriver = this.fb.group({
+  fullName: ['', Validators.required],
+  pays: ['', Validators.required],
+  coverImage: ['', Validators.required],
+  category: ['', Validators.required]
+});
 
-  submitted = false;
+  constructor(private fb: FormBuilder) { }
+
 
   ngOnInit(): void {
   }
 
-  onSubmit(myForm: NgForm){
-    const newDriver = new Driver(myForm.value['fullName'],
-                            myForm.value['pays'],
-                            myForm.value['coverImage'],
-                            myForm.value['category'],
-                            myForm.value['likeIts']);
-    this.data.addNewDriver(newDriver);
-    this.submitted = true;
-    setTimeout( () => {
-      this.router.navigate(['/drivers'])
-    } , 2000)
-  }
+  // updateFullName() {
+  //   this.fullName.setValue('Nancy');
+  // }
 
 }
