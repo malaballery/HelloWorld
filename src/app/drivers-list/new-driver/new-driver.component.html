@@ -1,33 +1,37 @@
 <h1>Ajouter un pilote</h1>
 <div class="col-6 border shadow my-5 p-5">
-    <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
+    <form (ngSubmit)="onSubmit()" [formGroup]="driverForm">
         <div class="form-group">
             <label for="fullName">Nom du pilote</label>
-            <input type="text" class="form-control" id="fullName" name="fullName" ngModel required #fullName="ngModel">
-            <div [hidden]="fullName.valid || fullName.pristine" class="alert alert-danger">Nom requis 😶</div>
+            <span class="text-danger" *ngIf="driverForm.controls['fullName'].errors && driverForm.controls['fullName'].hasError('required') || driverForm.controls['fullName'].hasError('minlength')">*</span>
+            <input type="text" class="form-control" id="fullName" formControlName="fullName" required>
+            <div [hidden]="driverForm.controls['fullName'].valid || driverForm.controls['fullName'].pristine" class="alert alert-danger">Nom requis😶</div>
+            <small class="badge bg-danger my-2" *ngIf="driverForm.controls['fullName'].hasError('minlength')">
+                Minimum {{ minLong }} caractères requis.
+            </small>
         </div>
         <div class="form-group">
             <label for="pays">Pays d'origine</label>
-            <input type="text" class="form-control" id="pays" name="pays" ngModel required #pays="ngModel">
-            <div [hidden]="pays.valid || pays.pristine" class="alert alert-danger">Pays d'origine requis 🧳</div>
+            <input type="text" class="form-control" id="pays" formControlName="pays" required>
+            <div [hidden]="driverForm.controls['pays'].valid || driverForm.controls['pays'].pristine" class="alert alert-danger">Pays d'origine requis 🧳</div>
         </div>
         <div class="form-group">
             <label for="coverImage"> Photo du pilote (url)</label>
-            <input type="text" class="form-control" id="coverImage" name="coverImage" ngModel required #coverImage="ngModel">
-            <div [hidden]="coverImage.valid || coverImage.pristine" class="alert alert-danger">Une photo est requise 🤳</div>
+            <input type="text" class="form-control" id="coverImage" formControlName="coverImage" required>
+            <div [hidden]="driverForm.controls['coverImage'].valid || driverForm.controls['coverImage'].pristine" class="alert alert-danger">Une photo est requise 🤳</div>
         </div>
         <div class="form-group my-3">
-            <label for="category" class="me-2">Catégorie</label>
-            <select id="category" name="category" ngModel required #category="ngModel">
-                <option value="">--Choisir une catégorie</option>
+            <label for="category" class="me-2">Discipline</label>
+            <select id="category" formControlName="category" required>
+                <option value="">--Choisir une discipline</option>
                 <option value="gymkhana">Gymkhana</option>
                 <option value="nascar">Nascar</option>
                 <option value="rallye">Rallye</option>
                 <option value="formule1">Formule 1</option>
                 <option value="drag">Drag</option>
             </select>
-            <div [hidden]="category.valid || category.pristine" class="alert alert-danger">Catégorie requise 🤯</div>
+            <div [hidden]="driverForm.controls['category'].valid || driverForm.controls['category'].pristine" class="alert alert-danger">Discipline requise 🤯</div>
         </div>
-        <button class="btn btn-success my-5">Enregistrer</button>
+        <button type="submit" class="btn btn-success my-5" [disabled]="driverForm.invalid">Enregistrer</button>
     </form>
 </div>

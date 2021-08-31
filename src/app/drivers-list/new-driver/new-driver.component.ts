@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Driver } from 'src/app/models/Driver';
 import { DataService } from 'src/app/services/data.service';
@@ -11,22 +11,34 @@ import { DataService } from 'src/app/services/data.service';
 })
 export class NewDriverComponent implements OnInit {
 
+  driverForm!: FormGroup;
+  minLong: number = 2;
+
   constructor(private data:DataService,
+              private fb:FormBuilder,
               private router:Router) { }
 
-  submitted = false;
 
   ngOnInit(): void {
+    this.createForm();
+  }
+  createForm() {
+    this.driverForm = this.fb.group({
+      fullName: ['', [Validators.required, Validators.minLength(this.minLong)]],
+      pays: ['', Validators.required],
+      coverImage: ['', Validators.required],
+      category: ['', Validators.required]
+    })
   }
 
-  onSubmit(myForm: NgForm){
-    const newDriver = new Driver(myForm.value['fullName'],
-                            myForm.value['pays'],
-                            myForm.value['coverImage'],
-                            myForm.value['category'],
-                            myForm.value['likeIts']);
-    this.data.addNewDriver(newDriver);
-    this.submitted = true;
+  onSubmit(){
+    const formValue = this.driverForm.value;
+    const driver = new Driver(
+      formValue['fullName'],
+      formValue['pays'],
+      formValue['category'],
+      formValue['coverImage']
+    )
     setTimeout( () => {
       this.router.navigate(['/drivers'])
     } , 2000)
