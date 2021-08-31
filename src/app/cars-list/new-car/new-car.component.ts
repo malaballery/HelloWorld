@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from '../../models/Car';
 import { NgForm } from '@angular/forms';
-import { DataService } from 'src/app/services/data.service';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/services/data.service';
+import { Car } from '../../models/Car';
 
 @Component({
   selector: 'app-new-car',
@@ -14,6 +14,8 @@ export class NewCarComponent implements OnInit {
   constructor(private data:DataService,
               private router:Router) { }
 
+  submitted = false;
+
   ngOnInit(): void {
   }
 
@@ -24,7 +26,7 @@ export class NewCarComponent implements OnInit {
                             myForm.value['power'],
                             myForm.value['perf']);
     this.data.addNewCar(newCar);
-    console.log(myForm.value);
+    this.submitted = true;
     setTimeout( () => {
       this.router.navigate(['/cars'])
     } , 2000)

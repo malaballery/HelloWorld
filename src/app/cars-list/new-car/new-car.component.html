@@ -3,23 +3,28 @@
     <form (ngSubmit)="onSubmit(myForm)" #myForm="ngForm">
         <div class="form-group">
             <label for="name">Nom de la voiture</label>
-            <input type="text" class="form-control" id="name" name="name" ngModel>
+            <input type="text" class="form-control" id="name" name="name" ngModel required #name="ngModel">
+            <div [hidden]="name.valid || name.pristine" class="alert alert-danger">Nom requis 😶</div>
         </div>
         <div class="form-group">
             <label for="pays">Pays d'origine</label>
-            <input type="text" class="form-control" id="pays" name="pays" ngModel>
+            <input type="text" class="form-control" id="pays" name="pays" ngModel required #pays="ngModel">
+            <div [hidden]="pays.valid || pays.pristine" class="alert alert-danger">Pays d'origine requis 🧳</div>
         </div>
         <div class="form-group">
             <label for="coverImage"> Photo de la voiture (url)</label>
-            <input type="text" class="form-control" id="coverImage" name="coverImage" ngModel>
+            <input type="text" class="form-control" id="coverImage" name="coverImage" ngModel required #coverImage="ngModel">
+            <div [hidden]="coverImage.valid || coverImage.pristine" class="alert alert-danger">Une photo est requise 🤳</div>
         </div>
         <div class="form-group">
             <label for="power">Puissance</label>
-            <input type="number" class="form-control" id="power" name="power" ngModel>
+            <input type="number" class="form-control" id="power" name="power" ngModel required #power="ngModel">
+            <div [hidden]="power.valid || power.pristine" class="alert alert-danger">Puissance requise 🤯</div>
         </div>
         <div class="form-group">
             <label for="perf">Temps de 0 à 100 km/h</label>
-            <input type="number" class="form-control" id="perf" name="perf" ngModel>
+            <input type="number" class="form-control" id="perf" name="perf" ngModel required #perf="ngModel">
+            <div [hidden]="perf.valid || perf.pristine" class="alert alert-danger">Performance requise 😼</div>
         </div>
         <button class="btn btn-success my-5">Enregistrer</button>
     </form>
