@@ -2,6 +2,12 @@
     Nos pilotes
 </h1>
 
+
+<div class="d-flex justify-content-between align-items-center my-5">
+    <div><a routerLink="/new-driver" class="badge bg-success me-3 p-3 fs-4 text-decoration-none">+ Ajouter un pilote</a></div>
+    <div class="badge bg-dark text-white p-3 fs-4">Données mise à jour: {{ driverUpdate | date:"EEEE dd MMMM yyyy à H:mm" }}</div>
+</div>
+
 <div class="row row-cols-3 card-deck justify-content-center">
     <app-driver-item *ngFor="let oneDriver of drivers" [driver]="oneDriver"></app-driver-item>
 </div>

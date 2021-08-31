@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from '../models/Car';
+import { Driver } from '../models/Driver';
 
 @Injectable({
   providedIn: 'root'
@@ -140,5 +141,9 @@ export class DataService {
 
   addNewCar(car:Car) {
     this.cars.push(car);
+  }
+
+  addNewDriver(driver:Driver) {
+    this.drivers.push(driver);
   }
 }
