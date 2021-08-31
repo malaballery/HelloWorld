@@ -111,6 +111,9 @@ export class DataService {
       perf: 2.5
     }
   ];
+
+  categories:string[] = ["gymkhana", "rallye", "formule 1", "nascar", "drag"];
+
   constructor() { }
 
   getAllCars() {
@@ -119,6 +122,10 @@ export class DataService {
 
   getAllDrivers() {
     return this.drivers;
+  }
+
+  getAllCategories() {
+    return this.categories;
   }
 
   getNbBestDrivers(nb:number) {

@@ -12,6 +12,7 @@ import { DataService } from 'src/app/services/data.service';
 export class NewDriverComponent implements OnInit {
 
   driverForm!: FormGroup;
+  categories:any;
   minLong: number = 2;
 
   constructor(private data:DataService,
@@ -20,6 +21,7 @@ export class NewDriverComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.categories= this.data.getAllCategories();
     this.createForm();
   }
   createForm() {
@@ -36,9 +38,10 @@ export class NewDriverComponent implements OnInit {
     const driver = new Driver(
       formValue['fullName'],
       formValue['pays'],
-      formValue['category'],
-      formValue['coverImage']
+      formValue['coverImage'],
+      formValue['category']
     )
+    this.data.addNewDriver(driver);
     setTimeout( () => {
       this.router.navigate(['/drivers'])
     } , 2000)

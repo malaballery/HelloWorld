@@ -24,11 +24,15 @@
             <label for="category" class="me-2">Discipline</label>
             <select id="category" formControlName="category" required>
                 <option value="">--Choisir une discipline</option>
-                <option value="gymkhana">Gymkhana</option>
-                <option value="nascar">Nascar</option>
-                <option value="rallye">Rallye</option>
-                <option value="formule1">Formule 1</option>
-                <option value="drag">Drag</option>
+                <option class="badge" *ngFor="let category of categories" [value]="category" [ngClass]="{
+                    'bg-success': category == 'gymkhana',
+                    'bg-warning': category == 'formule 1',
+                    'bg-info': category == 'rallye',
+                    'bg-primary': category == 'nascar',
+                    'bg-danger': category == 'drag'}">
+      
+                    {{ category | titlecase }}
+                </option>
             </select>
             <div [hidden]="driverForm.controls['category'].valid || driverForm.controls['category'].pristine" class="alert alert-danger">Discipline requise 🤯</div>
         </div>
